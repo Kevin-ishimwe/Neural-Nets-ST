@@ -1,10 +1,15 @@
-import numpy as np
+import pandas as pd
 import tensorflow as tf
 
-rank_a =tf.constant([[ 3, 4],[9,1]])
-rank_b =tf.constant([[ 1,2],[3,2]])
-print(tf.reduce_max(rank_a).numpy(),tf.math.argmax(rank_a).numpy())
+
+loaded_model = tf.keras.models.load_model("./models/IBM_model_iteration_1.1.h5")
+
+current_state = pd.DataFrame({
+    'close': [129.64]
+})
 
 
-
+predictions = loaded_model.predict(current_state)
+predicted_label = (predictions).astype(int)
+print("Predicted movement for the next day:",predicted_label)
 

@@ -3,3 +3,5 @@ numpy
 matplotlib
 tensorflow
 flask
+seaborn
+scikit-learn
